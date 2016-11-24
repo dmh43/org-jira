@@ -113,7 +113,7 @@ variables.
   :group 'org-jira
   :type '(alist :value-type plist))
 
-(defcustom org-jira-use-status-as-todo nil
+(defcustom org-jira-use-status-as-todo t
   "Use the JIRA status as the TODO tag value."
   :group 'org-jira)
 
@@ -1055,12 +1055,12 @@ See`org-jira-get-issue-list'"
                                                  nil)))
                                            (split-string org-issue-components ",\\s *"))))
                                   (cons 'priority (org-jira-get-id-name-alist org-issue-priority
-                                                                     (jiralib-get-priorities)))
+                                                                              (jiralib-get-priorities)))
                                   (cons 'description org-issue-description)
                                   (cons 'assignee (jiralib-get-user org-issue-assignee))
                                   (cons 'summary (org-jira-get-issue-val-from-org 'summary))
                                   (cons 'issuetype (org-jira-get-id-name-alist org-issue-type
-                                                                      (jiralib-get-issue-types)))))
+                                                                               (jiralib-get-issue-types)))))
       (org-jira-get-issues (list (jiralib-get-issue issue-id))))))
 
 
